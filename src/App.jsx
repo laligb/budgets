@@ -5,6 +5,7 @@ import { budgetContex } from "./context/BudgetContext";
 
 function App() {
   const [budget, setBudget] = useState(0);
+
   return (
     <budgetContex.Provider value={{ budget, setBudget }}>
       <div className="header">Aconsegeis la millor calidad</div>
