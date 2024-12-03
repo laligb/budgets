@@ -24,6 +24,11 @@ function Form() {
     }));
   };
 
+  const pagesPlus = () => setPages((p) => p + 1);
+  const pagesMinus = () => setPages((p) => Math.max(0, p - 1));
+  const lanPlus = () => setLanguages((p) => p + 1);
+  const lanMinus = () => setLanguages((p) => Math.max(0, p - 1));
+
   useEffect(() => {
     calculateBudget();
   }, [check, seo, ads, web, pages, languages]);
@@ -71,6 +76,10 @@ function Form() {
         languages={languages}
         onPagesChange={(e) => setPages(Number(e.target.value))}
         onLanguagesChange={(e) => setLanguages(Number(e.target.value))}
+        pPlus={pagesPlus}
+        pMinus={pagesMinus}
+        lPlus={lanPlus}
+        lMinus={lanMinus}
       />
       <div className="text-end">Preu supposat: {budget}</div>
     </form>

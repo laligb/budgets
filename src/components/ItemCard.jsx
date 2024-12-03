@@ -13,6 +13,10 @@ function ItemCard({
   languages,
   onPagesChange,
   onLanguagesChange,
+  pPlus,
+  pMinus,
+  lPlus,
+  lMinus,
 }) {
   return (
     <div
@@ -53,15 +57,13 @@ function ItemCard({
               icon={faPlus}
               style={{ width: "10px", height: "10px" }}
               className="btn btn-outline-secondary rounded-circle p-0 m-1"
-              onClick={() => {
-                onPagesChange;
-              }}
+              onClick={pPlus}
             />
             <input
               name="pages"
               type="number"
               style={{ width: "40px" }}
-              className="m-1"
+              className="m-1 text-end"
               value={pages}
               onChange={onPagesChange}
               min="0"
@@ -70,6 +72,7 @@ function ItemCard({
               icon={faMinus}
               style={{ width: "10px", height: "10px" }}
               className="btn btn-outline-secondary rounded-circle p-0 m-1"
+              onClick={pMinus}
             />
           </label>
           <label htmlFor="languages">
@@ -78,12 +81,13 @@ function ItemCard({
               icon={faPlus}
               style={{ width: "10px", height: "10px" }}
               className="btn btn-outline-secondary rounded-circle p-0 m-1"
+              onClick={lPlus}
             />
             <input
               name="languages"
               type="number"
               style={{ width: "40px" }}
-              className="m-1"
+              className="m-1 text-end"
               value={languages}
               onChange={onLanguagesChange}
               min="0"
@@ -92,6 +96,7 @@ function ItemCard({
               icon={faMinus}
               style={{ width: "10px", height: "10px" }}
               className="btn btn-outline-secondary rounded-circle p-0 m-1"
+              onClick={lMinus}
             />
           </label>
         </div>
