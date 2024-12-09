@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import { budgetContex } from "../context/BudgetContext";
 
-function Form() {
+function CustomForm() {
   const [seo] = useState(300);
   const [ads] = useState(400);
   const [web] = useState(500);
@@ -86,4 +86,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default CustomForm;
