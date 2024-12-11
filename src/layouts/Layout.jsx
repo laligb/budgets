@@ -5,7 +5,7 @@ function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="container w-100 mx-auto" style={{ maxWidth: "600px" }}>
+      <div className="container w-100 mx-auto" style={{ maxWidth: "1000px" }}>
         {children}
       </div>
     </>

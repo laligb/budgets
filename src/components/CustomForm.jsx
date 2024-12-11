@@ -6,16 +6,16 @@ function CustomForm() {
   const [seo] = useState(300);
   const [ads] = useState(400);
   const [web] = useState(500);
-  const { budget, setBudget } = useContext(budgetContex);
-
-  const [pages, setPages] = useState(0);
-  const [languages, setLanguages] = useState(0);
-
-  const [check, setCheck] = useState({
-    seo: false,
-    ads: false,
-    web: false,
-  });
+  const {
+    budget,
+    setBudget,
+    check,
+    setCheck,
+    pages,
+    setPages,
+    languages,
+    setLanguages,
+  } = useContext(budgetContex);
 
   const handleCheck = (key) => {
     setCheck((states) => ({
