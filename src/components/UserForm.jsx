@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { budgetContex } from "../context/BudgetContext";
 
 function UserForm() {
-  const [username, setUserName] = useState("");
+  const [name, setName] = useState("");
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
 
@@ -14,7 +14,7 @@ function UserForm() {
 
     const selectedFields = Object.keys(check).filter((key) => check[key]);
     const user = {
-      username: username,
+      name: name,
       telephone: telephone,
       email: email,
       budget: budget,
@@ -25,7 +25,7 @@ function UserForm() {
 
     setUsers([...users, user]);
 
-    setUserName("");
+    setName("");
     setTelephone("");
     setEmail("");
   }
@@ -46,8 +46,8 @@ function UserForm() {
             className="form-control"
             name="username"
             placeholder="Name"
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             required
           />
         </label>
