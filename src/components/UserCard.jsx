@@ -7,21 +7,38 @@ function UserCard() {
     return <p>No users found.</p>;
   }
   return (
-    <div className="row shadow m-3 rounded p-4 align-items-center ">
-      <div className="col-lg-4 text-start">
-        <h3>{users[0].name}</h3>
-        <p>{users[0].email}</p>
-        <p>{users[0].telephone}</p>
-      </div>
-      <div className="col-lg-4 text-center">
-        <p>Services:</p>
-        <li>seo</li>
-        <li>ads</li>
-      </div>
-      <div className="col-lg-4 text-end">
-        <p>Total</p>
-        <h2>{users[0].budget}</h2>
-      </div>
+    <div className=" ">
+      {users.map((user, index) => (
+        <div
+          key={index}
+          className="row shadow m-3 rounded p-4 align-items-center"
+        >
+          <div key={index} className="col-lg-4 text-start">
+            <h3>{user.name}</h3>
+            <p>{user.email}</p>
+            <p>{user.telephone}</p>
+          </div>
+          <div className="col-lg-4 text-center">
+            <p>Services:</p>
+            <ul>
+              {user.fields.map((field, index) => {
+                if (field === "web") {
+                  return (
+                    <li key={index}>
+                      {field} ({user.pages} pages, {user.languages} languages )
+                    </li>
+                  );
+                }
+                return <li key={index}>{field}</li>;
+              })}
+            </ul>
+          </div>
+          <div className="col-lg-4 text-end">
+            <p>Total</p>
+            <h2>{user.budget}</h2>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

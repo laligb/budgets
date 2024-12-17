@@ -81,7 +81,9 @@ function CustomForm() {
         lPlus={lanPlus}
         lMinus={lanMinus}
       />
-      <div className="text-end">Preu supposat: {budget}</div>
+      <div className="text-end m-5">
+        <h3>Preu supposat: {budget}</h3>
+      </div>
     </form>
   );
 }

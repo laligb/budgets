@@ -5,12 +5,26 @@ function UserForm() {
   const [name, setName] = useState("");
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState({});
 
   const { budget, users, setUsers, check, pages, languages } =
     useContext(budgetContex);
 
   function createUser(event) {
     event.preventDefault();
+
+    const newErrors = validateForm();
+
+    if (budget === 0) {
+      alert("Please, choose at least one service");
+      return;
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      alert("Some inputs are invalid. Please correct the highlighted fields.");
+      return;
+    }
 
     const selectedFields = Object.keys(check).filter((key) => check[key]);
     const user = {
@@ -28,28 +42,44 @@ function UserForm() {
     setName("");
     setTelephone("");
     setEmail("");
+    setErrors({});
   }
 
   useEffect(() => {
     console.log(users);
   }, [users]);
 
+  function validateForm() {
+    const newErrors = {};
+    if (!name) newErrors.name = "Please enter your name";
+    if (name.length < 3)
+      newErrors.name = "The name should be at least 3 letters";
+    if (!/^\+34[0-9]{9}$/.test(telephone))
+      newErrors.telephone = "Please enter correct telephone number";
+    if (!/\S+@\S+\.\S+/.test(email))
+      newErrors.email = "Please enter correct email";
+    return newErrors;
+  }
+
   return (
     <form
       action=""
       className="row g-3 align-items-center shadow p-4 rounded m-3"
+      noValidate
     >
       <div className="col-auto">
-        <label htmlFor="username" className="form-label">
+        <label htmlFor="name" className="form-label">
           <input
+            id="validateName"
             type="text"
-            className="form-control"
-            name="username"
+            className={`form-control ${errors.name ? "is-invalid" : name ? "is-valid" : ""}`}
+            name="name"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
+          {errors.name && <div className="invalid-feedback">{errors.name}</div>}
         </label>
       </div>
 
@@ -57,14 +87,16 @@ function UserForm() {
         <label htmlFor="telephone" className="form-label">
           <input
             type="tel"
-            className="form-control"
+            className={`form-control ${errors.telephone ? "is-invalid" : telephone ? "is-valid" : ""}`}
             name="telephone"
             placeholder="+34123456789"
-            pattern="\+34[0-9]{9}"
             value={telephone}
             onChange={(e) => setTelephone(e.target.value)}
             required
           />
+          {errors.telephone && (
+            <div className="invalid-feedback">{errors.telephone}</div>
+          )}
         </label>
       </div>
 
@@ -72,13 +104,16 @@ function UserForm() {
         <label htmlFor="email" className="form-label">
           <input
             type="email"
-            className="form-control"
+            className={`form-control ${errors.email ? "is-invalid" : email ? "is-valid" : ""}`}
             name="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {errors.email && (
+            <div className="invalid-feedback">{errors.email}</div>
+          )}
         </label>
       </div>
 

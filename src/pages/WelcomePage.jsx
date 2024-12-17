@@ -8,7 +8,7 @@ function WelcomePage() {
       </div>
       <br></br>
       <p>To calculate the budget, click here:</p>
-      <Link to="/calculate" className="btn btn-primary">
+      <Link to="/calculate" className="btn btn-success">
         Go to Calculator
       </Link>
     </div>
