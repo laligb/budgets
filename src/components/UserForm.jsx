@@ -58,6 +58,12 @@ function UserForm() {
       newErrors.telephone = "Please enter correct telephone number";
     if (!/\S+@\S+\.\S+/.test(email))
       newErrors.email = "Please enter correct email";
+
+    users.forEach((user) => {
+      if (user.telephone === telephone)
+        newErrors.telephone = "This number is already exist";
+      if (user.email === email) newErrors.email = "This email is already exist";
+    });
     return newErrors;
   }
 
