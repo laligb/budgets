@@ -1,6 +1,12 @@
 /* eslint-disable react/prop-types */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faMinus,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
+import { Modal, Button } from "react-bootstrap";
+import { useState } from "react";
 
 function ItemCard({
   title,
@@ -18,6 +24,14 @@ function ItemCard({
   lPlus,
   lMinus,
 }) {
+  const [showPagesModal, setShowPagesModal] = useState(false);
+  const [showLanguagesModal, setShowLanguagesModal] = useState(false);
+
+  const handlePagesModalClose = () => setShowPagesModal(false);
+  const handlePagesModalShow = () => setShowPagesModal(true);
+
+  const handleLanguagesModalClose = () => setShowLanguagesModal(false);
+  const handleLanguagesModalShow = () => setShowLanguagesModal(true);
   return (
     <div
       className="row shadow m-3 rounded p-4 align-items-center"
@@ -44,7 +58,7 @@ function ItemCard({
             checked={isChecked}
             onChange={onCheck}
           />
-          Alejir
+          Select
         </label>
       </div>
       <div className="col-1"></div>
@@ -52,7 +66,23 @@ function ItemCard({
       {showInputs && (
         <div className="col-8 text-end">
           <label htmlFor="pages">
-            Nombre de paginas
+            <Button
+              onClick={handlePagesModalShow}
+              style={{ background: "white", color: "grey", border: "none" }}
+            >
+              <FontAwesomeIcon icon={faCircleInfo} />
+            </Button>
+            <Modal show={showPagesModal} onHide={handlePagesModalClose}>
+              <Modal.Title className="text-center p-3">
+                Number of Languages
+              </Modal.Title>
+
+              <Modal.Body className="text-center pb-5">
+                Select the number of pages for your project. Price of each page
+                is 30 euros.
+              </Modal.Body>
+            </Modal>
+            Number of pages
             <FontAwesomeIcon
               icon={faPlus}
               style={{ width: "10px", height: "10px" }}
@@ -76,7 +106,23 @@ function ItemCard({
             />
           </label>
           <label htmlFor="languages">
-            Nombre de llenguatges
+            <Button
+              onClick={handleLanguagesModalShow}
+              style={{ background: "white", color: "grey", border: "none" }}
+            >
+              <FontAwesomeIcon icon={faCircleInfo} />
+            </Button>
+            <Modal show={showLanguagesModal} onHide={handleLanguagesModalClose}>
+              <Modal.Title className="text-center p-3">
+                Number of Languages
+              </Modal.Title>
+
+              <Modal.Body className="text-center pb-5">
+                Select the number of languages for your project. Price of each
+                language is 30 euros.
+              </Modal.Body>
+            </Modal>
+            Number of languages
             <FontAwesomeIcon
               icon={faPlus}
               style={{ width: "10px", height: "10px" }}
