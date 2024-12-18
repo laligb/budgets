@@ -3,7 +3,7 @@ import UserCard from "../components/UserCard";
 function CurrentBudgets() {
   return (
     <div>
-      CurrentBudgets
+      <h3>Current budgets</h3>
       <UserCard />
     </div>
   );

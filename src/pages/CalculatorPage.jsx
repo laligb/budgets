@@ -1,7 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CustomForm from "../components/CustomForm";
 import UserForm from "../components/UserForm";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import CurrentBudgets from "../layouts/CurrentBudgets";
 
 function CalculatorPage() {
@@ -9,9 +7,13 @@ function CalculatorPage() {
     <>
       <CustomForm />
       <UserForm />
-      <div className="text-center my-4">
-        <FontAwesomeIcon icon={faMinus} />
-      </div>
+
+      <hr
+        className="row m-3"
+        style={{
+          borderTop: "1px dashed black",
+        }}
+      />
 
       <CurrentBudgets />
     </>
