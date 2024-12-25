@@ -74,7 +74,7 @@ function ItemCard({
             </Button>
             <Modal show={showPagesModal} onHide={handlePagesModalClose}>
               <Modal.Title className="text-center p-3">
-                Number of Languages
+                Number of Pages
               </Modal.Title>
 
               <Modal.Body className="text-center pb-5">

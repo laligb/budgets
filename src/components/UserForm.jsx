@@ -26,6 +26,15 @@ function UserForm() {
       return;
     }
 
+    const formattedDate = new Date().toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+
     const selectedFields = Object.keys(check).filter((key) => check[key]);
     const user = {
       name: name,
@@ -35,6 +44,7 @@ function UserForm() {
       fields: selectedFields,
       pages: pages,
       languages: languages,
+      date: formattedDate,
     };
 
     setUsers([...users, user]);

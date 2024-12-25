@@ -1,8 +1,12 @@
 import { useContext } from "react";
 import { budgetContex } from "../context/BudgetContext";
 
-function UserCard() {
-  const { users } = useContext(budgetContex);
+function UserCard({ sortedUsers }) {
+  // const { users } = useContext(budgetContex);
+
+  const { users: contextUsers } = useContext(budgetContex);
+  const users = sortedUsers.length > 0 ? sortedUsers : contextUsers;
+
   if (users.length === 0) {
     return <p>No users found.</p>;
   }
