@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { budgetContex } from "../context/BudgetContext";
+import { budgetContext } from "../context/BudgetContext";
 
 function UserForm() {
   const [name, setName] = useState("");
@@ -8,7 +8,7 @@ function UserForm() {
   const [errors, setErrors] = useState({});
 
   const { budget, users, setUsers, check, pages, languages } =
-    useContext(budgetContex);
+    useContext(budgetContext);
 
   function createUser(event) {
     event.preventDefault();

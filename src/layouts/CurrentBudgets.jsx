@@ -1,12 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserCard from "../components/UserCard";
-import { budgetContex } from "../context/BudgetContext";
+import { budgetContext } from "../context/BudgetContext";
 
 function CurrentBudgets() {
   const [activeSort, setActiveSort] = useState("data");
-  const { users } = useContext(budgetContex);
+  const { users } = useContext(budgetContext);
   const [sort, setSort] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    const filteredUsers = users.filter((user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setSort(filteredUsers);
+  }, [searchQuery, users]);
 
   const handleSort = (sortType) => {
     const newOrder =
@@ -14,7 +22,7 @@ function CurrentBudgets() {
     setSortOrder(newOrder);
     setActiveSort(sortType);
 
-    const sortedArray = [...users].sort((a, b) => {
+    const sortedArray = [...sort].sort((a, b) => {
       if (sortType === "name") {
         return newOrder === "asc"
           ? a.name.localeCompare(b.name)
@@ -34,6 +42,13 @@ function CurrentBudgets() {
     setSort(sortedArray);
   };
 
+  const handleSearch = (e) => {
+    console.log("Search Input:", e.target.value);
+    setSearchQuery(e.target.value);
+  };
+
+  console.log("Filtered Users:", sort);
+
   return (
     <div>
       <h3>Current budgets</h3>
@@ -44,6 +59,7 @@ function CurrentBudgets() {
             className="form-control  search-bar pe-5"
             placeholder="Search..."
             aria-label="Search"
+            onChange={handleSearch}
           />
           <button
             className="btn position-absolute top-50 end-0 translate-middle-y"

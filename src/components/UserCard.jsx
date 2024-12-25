@@ -1,10 +1,9 @@
 import { useContext } from "react";
-import { budgetContex } from "../context/BudgetContext";
+import { budgetContext } from "../context/BudgetContext";
+import PropTypes from "prop-types";
 
 function UserCard({ sortedUsers }) {
-  // const { users } = useContext(budgetContex);
-
-  const { users: contextUsers } = useContext(budgetContex);
+  const { users: contextUsers } = useContext(budgetContext);
   const users = sortedUsers.length > 0 ? sortedUsers : contextUsers;
 
   if (users.length === 0) {
@@ -46,5 +45,9 @@ function UserCard({ sortedUsers }) {
     </div>
   );
 }
+
+UserCard.propTypes = {
+  sortedUsers: PropTypes.array.isRequired,
+};
 
 export default UserCard;

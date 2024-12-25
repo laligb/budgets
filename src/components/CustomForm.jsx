@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
-import { budgetContex } from "../context/BudgetContext";
+import { budgetContext } from "../context/BudgetContext";
 
 function CustomForm() {
   const [seo] = useState(300);
@@ -15,7 +15,7 @@ function CustomForm() {
     setPages,
     languages,
     setLanguages,
-  } = useContext(budgetContex);
+  } = useContext(budgetContext);
 
   const handleCheck = (key) => {
     setCheck((states) => ({

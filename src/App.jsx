@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-import { budgetContex } from "./context/BudgetContext";
+import { budgetContext } from "./context/BudgetContext";
 import RouterConfig from "./routes/RouterConfig";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   const [languages, setLanguages] = useState(0);
 
   return (
-    <budgetContex.Provider
+    <budgetContext.Provider
       value={{
         budget,
         setBudget,
@@ -31,7 +31,7 @@ function App() {
       }}
     >
       <RouterConfig />
-    </budgetContex.Provider>
+    </budgetContext.Provider>
   );
 }
 
