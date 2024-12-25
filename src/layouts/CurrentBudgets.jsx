@@ -6,28 +6,32 @@ function CurrentBudgets() {
   const [activeSort, setActiveSort] = useState("data");
   const { users } = useContext(budgetContex);
   const [sort, setSort] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const handleSort = (sortType) => {
+    const newOrder =
+      activeSort === sortType && sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newOrder);
     setActiveSort(sortType);
 
-    let sortedArray = [...users];
-
-    if (sortType === "name") {
-      sortedArray = sortedArray.sort((a, b) => a.name.localeCompare(b.name));
-    }
-
-    if (sortType === "data") {
-      sortedArray = sortedArray.sort(
-        (a, b) => new Date(a.date) - new Date(b.date)
-      );
-    }
-
-    if (sortType === "import") {
-      sortedArray = sortedArray.sort((a, b) => a.budget - b.budget);
-    }
+    const sortedArray = [...users].sort((a, b) => {
+      if (sortType === "name") {
+        return newOrder === "asc"
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name);
+      }
+      if (sortType === "data") {
+        return newOrder === "asc"
+          ? new Date(a.date) - new Date(b.date)
+          : new Date(b.date) - new Date(a.date);
+      }
+      if (sortType === "import") {
+        return newOrder === "asc" ? a.budget - b.budget : b.budget - a.budget;
+      }
+      return 0;
+    });
 
     setSort(sortedArray);
-    console.log(sort);
   };
 
   return (
@@ -60,35 +64,35 @@ function CurrentBudgets() {
         <div className="d-flex align-items-center gap-3">
           <button
             className={`btn btn-link p-0 text-decoration-none ${
-              activeSort === "data" ? "fw-bold" : "text-muted"
+              activeSort === "data" ? "fw-bold text-black" : "text-muted"
             }`}
             onClick={() => handleSort("data")}
           >
             Data
             {activeSort === "data" && (
-              <i className="bi bi-caret-down-fill ms-1"></i>
+              <span>{sortOrder === "asc" ? "▲" : "▼"}</span>
             )}
           </button>
           <button
             className={`btn btn-link p-0 text-decoration-none ${
-              activeSort === "import" ? "fw-bold" : "text-muted"
+              activeSort === "import" ? "fw-bold text-black" : "text-muted"
             }`}
             onClick={() => handleSort("import")}
           >
             Import
             {activeSort === "import" && (
-              <i className="bi bi-caret-down-fill ms-1"></i>
+              <span>{sortOrder === "asc" ? "▲" : "▼"}</span>
             )}
           </button>
           <button
             className={`btn btn-link p-0 text-decoration-none ${
-              activeSort === "name" ? "fw-bold" : "text-muted"
+              activeSort === "name" ? "fw-bold text-black" : "text-muted"
             }`}
             onClick={() => handleSort("name")}
           >
             Name
             {activeSort === "name" && (
-              <i className="bi bi-caret-down-fill ms-1"></i>
+              <span>{sortOrder === "asc" ? "▲" : "▼"}</span>
             )}
           </button>
         </div>
