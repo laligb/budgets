@@ -6,7 +6,8 @@ import {
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { Modal, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { budgetContext } from "../context/BudgetContext";
 
 function ItemCard({
   title,
@@ -32,6 +33,8 @@ function ItemCard({
 
   const handleLanguagesModalClose = () => setShowLanguagesModal(false);
   const handleLanguagesModalShow = () => setShowLanguagesModal(true);
+
+  const { isAnnual } = useContext(budgetContext);
   return (
     <div
       className="row shadow m-3 rounded p-4 align-items-center"
@@ -44,6 +47,11 @@ function ItemCard({
         <p>Programacio de una web responsive completa</p>
       </div>
       <div className="col-4 text-center">
+        {isAnnual && (
+          <p className="text-danger" id="disscount">
+            Now 20% Discount
+          </p>
+        )}
         <h2>{price} €</h2>
       </div>
       <div className="col-4 text-end">

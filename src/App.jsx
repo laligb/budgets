@@ -14,6 +14,7 @@ function App() {
   });
   const [pages, setPages] = useState(0);
   const [languages, setLanguages] = useState(0);
+  const [isAnnual, setIsAnnual] = useState(false);
 
   return (
     <budgetContext.Provider
@@ -28,6 +29,8 @@ function App() {
         setPages,
         languages,
         setLanguages,
+        isAnnual,
+        setIsAnnual,
       }}
     >
       <RouterConfig />

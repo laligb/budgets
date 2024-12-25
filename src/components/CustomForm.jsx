@@ -15,6 +15,7 @@ function CustomForm() {
     setPages,
     languages,
     setLanguages,
+    isAnnual,
   } = useContext(budgetContext);
 
   const handleCheck = (key) => {
@@ -31,7 +32,7 @@ function CustomForm() {
 
   useEffect(() => {
     calculateBudget();
-  }, [check, seo, ads, web, pages, languages]);
+  }, [check, seo, ads, web, pages, languages, isAnnual]);
 
   const calculateBudget = useCallback(() => {
     let total = 0;
@@ -44,8 +45,9 @@ function CustomForm() {
     if (check.web) {
       total += web + (pages + languages) * 30;
     }
-    setBudget(total);
-  }, [seo, ads, web, check, pages, languages]);
+    const discountFactor = isAnnual ? 0.8 : 1;
+    setBudget(total * discountFactor);
+  }, [seo, ads, web, check, pages, languages, isAnnual]);
 
   return (
     <form action="" className="">
