@@ -37,8 +37,8 @@ function CurrentBudgets() {
   return (
     <div>
       <h3>Current budgets</h3>
-      <div className="navbar navbar-expand-lg navbar-light">
-        <form className="d-flex position-relative">
+      <div className="navbar navbar-expand-lg navbar-light m-2">
+        <form className="d-flex position-relative  ms-auto px-2">
           <input
             type="text"
             className="form-control  search-bar pe-5"
