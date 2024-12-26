@@ -1,4 +1,4 @@
-# **Budget Calculator**
+# **S6. Budget Calculator**
 
 ## **Project Overview**
 
