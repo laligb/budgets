@@ -68,7 +68,7 @@ https://budgets-zeta.vercel.app/calculate?seo=true&ads=false&web=false&pages=0&l
 ### **Live Version**
 
 Visit the live version of the project here:
-[Live Budget Calculator](https://budgets-zeta.vercel.app/calculate?seo=true&ads=false&web=false&pages=0&languages=0&isAnnual=true)
+[Live Version](https://budgets-zeta.vercel.app)
 
 ### **Navigation**
 
