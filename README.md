@@ -48,8 +48,6 @@ This project helps users calculate a website budget interactively by selecting s
 
 ---
 
-## **Screenshot**
-
 ## **How It Works**
 
 ### **User Interaction**
