@@ -55,10 +55,6 @@ function UserForm() {
     setErrors({});
   }
 
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
-
   function validateForm() {
     const newErrors = {};
     if (!name) newErrors.name = "Please enter your name";

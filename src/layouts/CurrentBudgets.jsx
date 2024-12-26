@@ -43,11 +43,11 @@ function CurrentBudgets() {
   };
 
   const handleSearch = (e) => {
-    console.log("Search Input:", e.target.value);
+    "Search Input:", e.target.value;
     setSearchQuery(e.target.value);
   };
 
-  console.log("Filtered Users:", sort);
+  "Filtered Users:", sort;
 
   return (
     <div>
