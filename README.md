@@ -65,11 +65,6 @@ When sharing a quote, the URL dynamically updates to include the selected option
 https://budgets-zeta.vercel.app/calculate?seo=true&ads=false&web=false&pages=0&languages=0&isAnnual=true
 ```
 
-### **Live Version**
-
-Visit the live version of the project here:
-[Live Version](https://budgets-zeta.vercel.app)
-
 ### **Navigation**
 
 - **Welcome Page**: Explains the purpose and functionality of the application.
